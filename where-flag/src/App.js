@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { useState, useEffect } from 'react';
+import Navbar from './NavBar/Navbar';
+import Filter from './Filter/Filter';
+import FlagContainer from './FlagContainer/FlagContainer';
 
 function App() {
+
+  const [isDay, setIsDay] = useState(false);
+
+  const handleClick = () => { setIsDay(!isDay) }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={isDay ? "light-mode-bckg light-mode-text main-container" : "dark-mode-bckg dark-mode-text main-container"}>
+      <Navbar isDay={isDay} handleClick={handleClick} />
+      <Filter isDay={isDay} />
+      <FlagContainer />
     </div>
   );
 }

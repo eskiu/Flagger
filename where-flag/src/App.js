@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from './NavBar/Navbar';
 import Filter from './Filter/Filter';
-import FlagContainer from './FlagContainer/FlagContainer';
+import FlagListContainer from './FlagContainer/FlagListContainer';
 
 function App() {
 
@@ -14,8 +14,7 @@ function App() {
   return (
     <div className={isDay ? "light-mode-bckg light-mode-text main-container" : "dark-mode-bckg dark-mode-text main-container"}>
       <Navbar isDay={isDay} handleClick={handleClick} />
-      <Filter isDay={isDay} />
-      <FlagContainer />
+      <FlagListContainer isDay={isDay} />
     </div>
   );
 }

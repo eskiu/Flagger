@@ -17,7 +17,7 @@ function CountryDetailContainer({ isDay }) {
             .then((res) => { return res.json() })
             .then((resolve) => {
                 resolve.map((response) => {
-                    setCountry(response)
+                    return setCountry(response)
                 })
                 setLoading(false)
             })

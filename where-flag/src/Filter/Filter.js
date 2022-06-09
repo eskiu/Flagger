@@ -17,19 +17,17 @@ function Filter({ isDay, setCountries }) {
     }, [])
 
     useEffect(() => {
-        const resultado = search.filter((country) => { return ((country.translations.es).toLowerCase()).includes(searching) });
-        setCountries(resultado);
+        setCountries(search.filter((country) => { return ((country.translations.es).toLowerCase()).includes(searching) }));
 
-    }, [searching])
+    }, [searching, search, setCountries])
 
     useEffect(() => {
         if (continent !== "All") {
-            const continente = search.filter((country) => { return country.region === continent });
-            setCountries(continente);
+            setCountries(search.filter((country) => { return country.region === continent }));
         } else {
             setCountries(search);
         }
-    }, [continent])
+    }, [continent, search, setCountries])
 
 
     return (

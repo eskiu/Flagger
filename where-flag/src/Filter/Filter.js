@@ -4,11 +4,10 @@ function Filter({ isDay, setCountries }) {
 
     const [searching, setSearching] = useState([]);
     const [search, setSearch] = useState([]);
-
-    const url = 'https://restcountries.com/v2/all';
+    const [continent, setContinent] = useState([]);
 
     const fetchCountryData = async () => {
-        const response = await fetch(url);
+        const response = await fetch('https://restcountries.com/v2/all');
         const data = await response.json();
         setSearch(data);
     }
@@ -23,6 +22,14 @@ function Filter({ isDay, setCountries }) {
 
     }, [searching])
 
+    useEffect(() => {
+        if (continent !== "All") {
+            const continente = search.filter((country) => { return country.region === continent });
+            setCountries(continente);
+        } else {
+            setCountries(search);
+        }
+    }, [continent])
 
 
     return (
@@ -32,14 +39,14 @@ function Filter({ isDay, setCountries }) {
                     <input type="text" name="text" onChange={(e) => setSearching(e.target.value.toLowerCase())} placeholder="Search" className={isDay ? "light-mode-text light-mode-elmnt" : "dark-mode-text dark-mode-elmnt"} />
                 </div>
                 <div className="filter-region">
-                    <select className={isDay ? " light-mode-text light-mode-elmnt" : "dark-mode-text dark-mode-elmnt"}>
+                    <select onChange={(e) => setContinent(e.target.value)} className={isDay ? " light-mode-text light-mode-elmnt" : "dark-mode-text dark-mode-elmnt"}>
                         <option value="" disabled>Filter by Region</option>
-                        <option value="">All Regions</option>
-                        <option value="">Africa</option>
-                        <option value="">America</option>
-                        <option value="">Asia</option>
-                        <option value="">Europe</option>
-                        <option value="">Oceania</option>
+                        <option value="All">All Regions</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Americas">Americas</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
                     </select>
                 </div>
             </div>

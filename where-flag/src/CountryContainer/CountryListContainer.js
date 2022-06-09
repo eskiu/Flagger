@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import FlagList from "./FlagList"
+import CountryList from "./CountryList"
 import Spinner from '../Spinner/Spinner';
 import Filter from "../Filter/Filter"
 
-function FlagListContainer({ isDay }) {
+function CountryListContainer({ isDay }) {
     const [countries, setCountries] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -24,9 +24,9 @@ function FlagListContainer({ isDay }) {
         <>
             <Filter isDay={isDay} countries={countries} setCountries={setCountries} />
             <div className="flag-container">
-                {loading ? <Spinner isDay={isDay} /> : <FlagList countries={countries} isDay={isDay} />}
+                {loading ? <Spinner isDay={isDay} /> : <CountryList countries={countries} isDay={isDay} />}
             </div>
         </>
     )
 }
-export default FlagListContainer
+export default CountryListContainer

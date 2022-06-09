@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { useState } from 'react';
 import Navbar from './NavBar/Navbar';
-import Filter from './Filter/Filter';
-import FlagListContainer from './FlagContainer/FlagListContainer';
+import Main from './Main';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
@@ -13,8 +13,10 @@ function App() {
 
   return (
     <div className={isDay ? "light-mode-bckg light-mode-text main-container" : "dark-mode-bckg dark-mode-text main-container"}>
-      <Navbar isDay={isDay} handleClick={handleClick} />
-      <FlagListContainer isDay={isDay} />
+      <BrowserRouter>
+        <Navbar isDay={isDay} handleClick={handleClick} />
+        <Main isDay={isDay} />
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function Filter({ isDay, countries, setCountries }) {
+function Filter({ isDay, setCountries }) {
 
     const [searching, setSearching] = useState([]);
     const [search, setSearch] = useState([]);
@@ -19,12 +19,7 @@ function Filter({ isDay, countries, setCountries }) {
 
     useEffect(() => {
         const resultado = search.filter((country) => { return ((country.translations.es).toLowerCase()).includes(searching) });
-
-        if (searching.length === 0) {
-            setCountries(countries)
-        } else {
-            setCountries(resultado);
-        }
+        setCountries(resultado);
 
     }, [searching])
 

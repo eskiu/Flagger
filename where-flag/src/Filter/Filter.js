@@ -19,7 +19,7 @@ function Filter({ isDay, setCountries }) {
     useEffect(() => {
         setCountries(search.filter((country) => { return ((country.translations.es).toLowerCase()).includes(searching) }));
 
-    }, [searching, search, setCountries])
+    }, [searching])
 
     useEffect(() => {
         if (continent !== "All") {
@@ -27,7 +27,7 @@ function Filter({ isDay, setCountries }) {
         } else {
             setCountries(search);
         }
-    }, [continent, search, setCountries])
+    }, [continent])
 
 
     return (
